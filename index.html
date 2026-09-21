@@ -29,13 +29,12 @@
 
         body {
             background: #050505;
-            color: #ffffff;
+            color: #fff;
             font-family:
                 Inter,
                 Arial,
                 Helvetica,
                 sans-serif;
-
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -46,7 +45,6 @@
         }
 
         :root {
-
             --black: #050505;
             --black2: #0a0a0a;
             --card: #101010;
@@ -55,12 +53,104 @@
             --red2: #ff1e2d;
             --dark-red: #7f0000;
 
-            --white: #ffffff;
+            --white: #fff;
             --gray: #9b9b9b;
             --gray2: #686868;
 
-            --border:
-                rgba(255, 255, 255, 0.09);
+            --border: rgba(255, 255, 255, .09);
+        }
+
+
+        /* =====================================================
+           ITACHI MANGEKYO SHARINGAN CURSOR
+           Uses the exact Sharingan image supplied by you.
+        ===================================================== */
+
+        @media (pointer: fine) {
+
+            html,
+            body,
+            body * {
+                cursor: none !important;
+            }
+
+            .itachi-cursor {
+                position: fixed;
+
+                left: 0;
+                top: 0;
+
+                width: 42px;
+                height: 42px;
+
+                pointer-events: none;
+
+                z-index: 999999;
+
+                transform:
+                    translate(-50%, -50%);
+
+                opacity: 0;
+
+                will-change:
+                    left,
+                    top,
+                    width,
+                    height;
+
+                transition:
+                    width .18s ease,
+                    height .18s ease,
+                    opacity .18s ease;
+            }
+
+            .itachi-cursor img {
+                width: 100%;
+                height: 100%;
+
+                display: block;
+
+                object-fit: contain;
+
+                border-radius: 50%;
+
+                user-select: none;
+
+                -webkit-user-drag: none;
+
+                animation:
+                    sharinganSpin 9s linear infinite;
+
+                filter:
+                    drop-shadow(0 0 4px rgba(229, 9, 20, .95)) drop-shadow(0 0 10px rgba(229, 9, 20, .65)) drop-shadow(0 0 20px rgba(229, 9, 20, .25));
+            }
+
+            @keyframes sharinganSpin {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .itachi-cursor.hover {
+                width: 58px;
+                height: 58px;
+            }
+
+            .itachi-cursor.hover img {
+                filter:
+                    drop-shadow(0 0 5px rgba(229, 9, 20, 1)) drop-shadow(0 0 14px rgba(229, 9, 20, .8)) drop-shadow(0 0 25px rgba(229, 9, 20, .35));
+            }
+        }
+
+        @media (pointer: coarse) {
+
+            .itachi-cursor {
+                display: none;
+            }
         }
 
 
@@ -69,10 +159,7 @@
         ===================================================== */
 
         .container {
-
-            width: min(1180px,
-                    90%);
-
+            width: min(1180px, 90%);
             margin: auto;
         }
 
@@ -82,136 +169,93 @@
         ===================================================== */
 
         nav {
-
             position: fixed;
 
             top: 0;
             left: 0;
 
             width: 100%;
-
             height: 75px;
 
             z-index: 999;
 
             background:
-                rgba(5, 5, 5, 0.90);
+                rgba(5, 5, 5, .90);
 
             backdrop-filter:
                 blur(15px);
 
             border-bottom:
-                1px solid rgba(229, 9, 20, 0.15);
+                1px solid rgba(229, 9, 20, .15);
         }
 
-
         .nav-container {
-
             height: 100%;
 
             display: flex;
-
             align-items: center;
-
-            justify-content:
-                space-between;
+            justify-content: space-between;
         }
 
-
         .logo {
-
             font-size: 22px;
-
             font-weight: 800;
-
             letter-spacing: -1px;
         }
 
-
         .logo span {
-
-            color:
-                var(--red);
+            color: var(--red);
         }
 
-
         .nav-links {
-
             display: flex;
-
             gap: 30px;
-
             list-style: none;
         }
 
-
         .nav-links a {
-
-            color:
-                #999;
-
+            color: #999;
             font-size: 13px;
-
-            transition:
-                0.3s;
+            transition: .3s;
         }
 
-
         .nav-links a:hover {
-
-            color:
-                var(--red);
+            color: var(--red);
 
             text-shadow:
                 0 0 10px rgba(229, 9, 20, .5);
         }
 
-
         .nav-button {
-
             border:
                 1px solid rgba(229, 9, 20, .4);
 
             padding:
                 9px 17px;
 
-            border-radius:
-                5px;
+            border-radius: 5px;
 
-            font-size:
-                12px;
+            font-size: 12px;
 
-            color:
-                #ddd;
+            color: #ddd;
 
-            transition:
-                .3s;
+            transition: .3s;
         }
 
-
         .nav-button:hover {
-
-            background:
-                var(--red);
-
-            border-color:
-                var(--red);
+            background: var(--red);
+            border-color: var(--red);
 
             box-shadow:
                 0 0 20px rgba(229, 9, 20, .3);
         }
 
-
         .menu {
-
             display: none;
 
             font-size: 25px;
 
-            cursor: pointer;
-
-            color:
-                var(--red);
+            color: var(--red);
         }
 
 
@@ -220,119 +264,77 @@
         ===================================================== */
 
         .hero {
+            min-height: 100vh;
 
-            min-height:
-                100vh;
+            display: flex;
+            align-items: center;
 
-            display:
-                flex;
+            position: relative;
 
-            align-items:
-                center;
+            overflow: hidden;
 
-            position:
-                relative;
-
-            overflow:
-                hidden;
-
-            padding-top:
-                90px;
+            padding-top: 90px;
         }
 
-
-        /* red atmospheric glow */
-
         .hero::before {
-
             content: "";
 
-            position:
-                absolute;
+            position: absolute;
 
-            width:
-                600px;
-
-            height:
-                600px;
+            width: 600px;
+            height: 600px;
 
             background:
                 radial-gradient(circle,
                     rgba(229, 9, 20, .22),
                     transparent 65%);
 
-            top:
-                -200px;
+            top: -200px;
+            right: -200px;
 
-            right:
-                -200px;
-
-            filter:
-                blur(30px);
+            filter: blur(30px);
         }
 
-
         .hero::after {
-
             content: "";
 
-            position:
-                absolute;
+            position: absolute;
 
-            width:
-                500px;
-
-            height:
-                500px;
+            width: 500px;
+            height: 500px;
 
             background:
                 radial-gradient(circle,
                     rgba(130, 0, 0, .18),
                     transparent 65%);
 
-            bottom:
-                -250px;
-
-            left:
-                -200px;
+            bottom: -250px;
+            left: -200px;
         }
 
-
         .hero-grid {
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
                 1.05fr .95fr;
 
-            align-items:
-                center;
+            align-items: center;
 
-            gap:
-                70px;
+            gap: 70px;
 
-            position:
-                relative;
+            position: relative;
 
-            z-index:
-                2;
+            z-index: 2;
         }
 
-
         .availability {
+            display: inline-flex;
 
-            display:
-                inline-flex;
+            align-items: center;
 
-            align-items:
-                center;
+            gap: 8px;
 
-            gap:
-                8px;
-
-            padding:
-                6px 11px;
+            padding: 6px 11px;
 
             border:
                 1px solid rgba(229, 9, 20, .35);
@@ -340,195 +342,167 @@
             background:
                 rgba(229, 9, 20, .06);
 
-            color:
-                #ff6b72;
+            color: #ff6b72;
 
-            border-radius:
-                30px;
+            border-radius: 30px;
 
-            font-size:
-                11px;
+            font-size: 11px;
 
-            margin-bottom:
-                25px;
+            margin-bottom: 25px;
         }
 
-
         .status-dot {
+            width: 7px;
+            height: 7px;
 
-            width:
-                7px;
+            background: #ff2836;
 
-            height:
-                7px;
-
-            background:
-                #ff2836;
-
-            border-radius:
-                50%;
+            border-radius: 50%;
 
             box-shadow:
                 0 0 10px #e50914;
         }
 
-
         .hero-small {
+            color: #ff3b46;
 
-            color:
-                #ff3b46;
+            font-size: 14px;
 
-            font-size:
-                14px;
-
-            margin-bottom:
-                8px;
+            margin-bottom: 8px;
         }
-
 
         .hero h1 {
-
             font-size:
-                clamp(45px,
-                    6vw,
-                    78px);
+                clamp(45px, 6vw, 78px);
 
-            line-height:
-                .98;
+            line-height: .98;
 
-            letter-spacing:
-                -4px;
+            letter-spacing: -4px;
 
-            margin-bottom:
-                22px;
+            margin-bottom: 22px;
         }
 
-
         .hero h1 span {
+            display: block;
 
-            display:
-                block;
-
-            color:
-                #ffffff;
+            color: #fff;
 
             text-shadow:
                 0 0 35px rgba(229, 9, 20, .25);
         }
 
-
         .hero h1 .red {
-
-            color:
-                var(--red);
+            color: var(--red);
 
             text-shadow:
                 0 0 30px rgba(229, 9, 20, .45);
         }
 
 
-        .hero h2 {
+        /* =====================================================
+           TYPING TITLE
+        ===================================================== */
+
+        .typing-line {
+            display: flex;
+
+            align-items: center;
+
+            min-height: 48px;
+
+            margin-bottom: 20px;
 
             font-size:
-                clamp(21px,
-                    3vw,
-                    31px);
+                clamp(21px, 3vw, 31px);
 
-            color:
-                #ddd;
+            color: #ddd;
 
-            margin-bottom:
-                20px;
+            white-space: nowrap;
         }
 
+        #typingText {
+            color: #fff;
+        }
 
-        .hero h2 span {
+        .typing-cursor {
+            width: 3px;
+            height: 38px;
 
-            color:
-                var(--red);
+            margin-left: 7px;
+
+            background: var(--red);
+
+            box-shadow:
+                0 0 12px var(--red);
+
+            animation:
+                blinkCursor .7s infinite;
+        }
+
+        @keyframes blinkCursor {
+
+            0%,
+            49% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+            }
         }
 
 
         .hero-description {
+            max-width: 650px;
 
-            max-width:
-                650px;
+            color: var(--gray);
 
-            color:
-                var(--gray);
+            font-size: 15px;
 
-            font-size:
-                15px;
-
-            line-height:
-                1.9;
+            line-height: 1.9;
         }
-
 
         .hero-buttons {
+            display: flex;
 
-            display:
-                flex;
+            flex-wrap: wrap;
 
-            flex-wrap:
-                wrap;
+            gap: 12px;
 
-            gap:
-                12px;
-
-            margin-top:
-                30px;
+            margin-top: 30px;
         }
-
 
         .button {
+            display: inline-flex;
 
-            display:
-                inline-flex;
+            align-items: center;
+            justify-content: center;
 
-            align-items:
-                center;
+            gap: 8px;
 
-            justify-content:
-                center;
+            padding: 13px 20px;
 
-            gap:
-                8px;
+            border-radius: 5px;
 
-            padding:
-                13px 20px;
+            font-size: 13px;
 
-            border-radius:
-                5px;
+            font-weight: 700;
 
-            font-size:
-                13px;
-
-            font-weight:
-                700;
-
-            transition:
-                .3s;
+            transition: .3s;
         }
 
-
         .button-red {
+            background: var(--red);
 
-            background:
-                var(--red);
-
-            color:
-                white;
+            color: white;
 
             box-shadow:
                 0 0 25px rgba(229, 9, 20, .22);
         }
 
-
         .button-red:hover {
-
-            background:
-                #ff1825;
+            background: #ff1825;
 
             transform:
                 translateY(-3px);
@@ -537,84 +511,56 @@
                 0 0 35px rgba(229, 9, 20, .45);
         }
 
-
         .button-outline {
-
             border:
                 1px solid #343434;
 
-            color:
-                #ccc;
+            color: #ccc;
         }
 
-
         .button-outline:hover {
+            border-color: var(--red);
 
-            border-color:
-                var(--red);
-
-            color:
-                white;
+            color: white;
 
             background:
                 rgba(229, 9, 20, .05);
         }
 
-
         .socials {
+            display: flex;
 
-            display:
-                flex;
+            gap: 9px;
 
-            gap:
-                9px;
-
-            margin-top:
-                28px;
+            margin-top: 28px;
         }
 
-
         .socials a {
+            width: 40px;
+            height: 40px;
 
-            width:
-                40px;
+            display: grid;
 
-            height:
-                40px;
-
-            display:
-                grid;
-
-            place-items:
-                center;
+            place-items: center;
 
             border:
                 1px solid #292929;
 
-            border-radius:
-                5px;
+            border-radius: 5px;
 
-            color:
-                #888;
+            color: #888;
 
-            font-size:
-                11px;
+            font-size: 11px;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            transition:
-                .3s;
+            transition: .3s;
         }
 
-
         .socials a:hover {
+            color: var(--red);
 
-            color:
-                var(--red);
-
-            border-color:
-                var(--red);
+            border-color: var(--red);
 
             box-shadow:
                 0 0 15px rgba(229, 9, 20, .2);
@@ -622,215 +568,761 @@
 
 
         /* =====================================================
-           HERO IMAGE
+           HERO ID CARD AREA
         ===================================================== */
 
         .hero-image-area {
+            display: flex;
 
-            display:
-                flex;
+            align-items: center;
+            justify-content: center;
 
-            align-items:
-                center;
+            position: relative;
 
-            justify-content:
-                center;
-
-            position:
-                relative;
-
-            min-height:
-                520px;
+            min-height: 600px;
         }
 
 
+        /* Rotating background ring */
+
         .image-ring {
+            position: absolute;
 
-            position:
-                absolute;
-
-            width:
-                410px;
-
-            height:
-                410px;
+            width: 450px;
+            height: 450px;
 
             border:
-                1px solid rgba(229, 9, 20, .5);
+                1px solid rgba(229, 9, 20, .45);
 
-            border-radius:
-                50%;
+            border-radius: 50%;
 
             box-shadow:
                 0 0 60px rgba(229, 9, 20, .12);
 
             animation:
                 rotateRing 18s linear infinite;
+
+            pointer-events: none;
         }
 
-
         .image-ring::before {
-
             content: "";
 
-            position:
-                absolute;
+            position: absolute;
 
-            inset:
-                18px;
+            inset: 18px;
 
             border:
                 1px dashed rgba(229, 9, 20, .35);
 
-            border-radius:
-                50%;
+            border-radius: 50%;
         }
-
-
-        .hero-photo {
-
-            width:
-                330px;
-
-            height:
-                430px;
-
-            object-fit:
-                cover;
-
-            object-position:
-                center;
-
-            position:
-                relative;
-
-            z-index:
-                2;
-
-            border:
-                1px solid rgba(229, 9, 20, .65);
-
-            border-radius:
-                4px;
-
-            filter:
-                saturate(.85) contrast(1.05);
-
-            box-shadow:
-                0 0 50px rgba(229, 9, 20, .18);
-
-            background:
-                #111;
-        }
-
-
-        .hero-photo-overlay {
-
-            position:
-                absolute;
-
-            width:
-                330px;
-
-            height:
-                430px;
-
-            z-index:
-                3;
-
-            pointer-events:
-                none;
-
-            background:
-                linear-gradient(180deg,
-                    transparent 55%,
-                    rgba(0, 0, 0, .75));
-        }
-
-
-        .itachi-mark {
-
-            position:
-                absolute;
-
-            right:
-                15px;
-
-            top:
-                15px;
-
-            z-index:
-                4;
-
-            width:
-                55px;
-
-            height:
-                55px;
-
-            border:
-                2px solid var(--red);
-
-            border-radius:
-                50%;
-
-            box-shadow:
-                0 0 20px rgba(229, 9, 20, .4);
-
-            display:
-                grid;
-
-            place-items:
-                center;
-
-            color:
-                var(--red);
-
-            font-size:
-                24px;
-        }
-
-
-        .hero-caption {
-
-            position:
-                absolute;
-
-            bottom:
-                10px;
-
-            z-index:
-                5;
-
-            color:
-                #fff;
-
-            font-size:
-                12px;
-
-            letter-spacing:
-                3px;
-
-            text-transform:
-                uppercase;
-
-            text-shadow:
-                0 2px 10px black;
-        }
-
 
         @keyframes rotateRing {
 
             from {
-                transform:
-                    rotate(0deg);
+                transform: rotate(0deg);
             }
 
             to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =====================================================
+           ID CARD AREA
+        ===================================================== */
+
+        .id-card-area {
+            position: relative;
+
+            width: 420px;
+            height: 610px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: flex-start;
+
+            perspective: 1200px;
+
+            z-index: 10;
+        }
+
+
+        /* =====================================================
+           LANYARD
+        ===================================================== */
+
+        .lanyard {
+            position: absolute;
+
+            top: -100px;
+            left: 50%;
+
+            width: 100px;
+            height: 170px;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 5;
+
+            pointer-events: none;
+        }
+
+        .lanyard-strap {
+            position: absolute;
+
+            top: 0;
+            left: 30px;
+
+            width: 40px;
+            height: 145px;
+
+            background:
+                repeating-linear-gradient(90deg,
+                    #050505 0px,
+                    #050505 7px,
+                    #191919 8px,
+                    #050505 15px);
+
+            border-left:
+                2px solid var(--red);
+
+            border-right:
+                2px solid var(--red);
+
+            box-shadow:
+                0 0 12px rgba(229, 9, 20, .35);
+        }
+
+        .lanyard-strap::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -2px;
+
+            width: 40px;
+            height: 5px;
+
+            background: var(--red);
+
+            box-shadow:
+                0 0 12px var(--red);
+        }
+
+        .lanyard-hook {
+            position: absolute;
+
+            left: 25px;
+            bottom: 5px;
+
+            width: 50px;
+            height: 38px;
+
+            border:
+                5px solid #777;
+
+            border-top: 0;
+
+            border-radius:
+                0 0 15px 15px;
+
+            background: #111;
+
+            transform:
+                rotate(180deg);
+
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, .15);
+        }
+
+        .lanyard-hook span {
+            position: absolute;
+
+            width: 16px;
+            height: 16px;
+
+            border:
+                3px solid #999;
+
+            border-radius: 50%;
+
+            left: 12px;
+            top: 7px;
+        }
+
+
+        /* =====================================================
+           DRAG LABEL
+        ===================================================== */
+
+        .drag-label {
+            position: absolute;
+
+            top: 15px;
+            right: -5px;
+
+            color: var(--red);
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            transform: rotate(8deg);
+
+            animation:
+                dragFloat 2s ease-in-out infinite;
+
+            z-index: 20;
+        }
+
+        .drag-label span {
+            font-size: 20px;
+        }
+
+        @keyframes dragFloat {
+
+            0%,
+            100% {
                 transform:
-                    rotate(360deg);
+                    translateY(0) rotate(8deg);
             }
 
+            50% {
+                transform:
+                    translateY(-7px) rotate(8deg);
+            }
+        }
+
+
+        /* =====================================================
+           ID CARD
+        ===================================================== */
+
+        .id-card {
+            position: absolute;
+
+            top: 65px;
+
+            width: 300px;
+            height: 445px;
+
+            transform:
+                translate3d(var(--drag-x, 0px),
+                    var(--drag-y, 0px),
+                    0) rotate(var(--drag-rotate, 0deg));
+
+            cursor: grab;
+
+            /* Dragging is handled by the outer card.
+               Flipping is handled only by the inner card. */
+            transition:
+                transform .75s cubic-bezier(.2, .8, .2, 1);
+
+            z-index: 10;
+
+            touch-action: none;
+        }
+
+        .id-card::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            border-radius: 12px;
+
+            pointer-events: none;
+
+            box-shadow:
+                0 25px 30px rgba(0, 0, 0, .8),
+                0 0 25px rgba(229, 9, 20, .25);
+
+            z-index: -1;
+        }
+
+        .id-card.dragging {
+            transition: none;
+
+            cursor: grabbing;
+        }
+
+        .id-card-inner {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+
+            transition:
+                transform .75s cubic-bezier(.2, .8, .2, 1);
+
+            will-change: transform;
+        }
+
+        .id-card-inner.flipped {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+
+        .id-card-inner,
+        .id-card-face {
+            -webkit-perspective: 1200px;
+        }
+
+
+        .id-card-face {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+
+            border:
+                1px solid rgba(255, 0, 20, .7);
+
+            background: #080808;
+
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, .05),
+
+                inset 0 0 40px rgba(229, 9, 20, .08);
+        }
+
+
+        /* =====================================================
+           FRONT OF ID CARD
+        ===================================================== */
+
+        .id-card-front {
+            padding: 16px;
+
+            background:
+                linear-gradient(145deg,
+                    #171717,
+                    #050505 55%,
+                    #160000);
+        }
+
+        .card-photo-wrapper {
+            position: relative;
+
+            width: 100%;
+            height: 255px;
+
+            overflow: hidden;
+
+            border-radius: 7px;
+
+            border:
+                1px solid rgba(229, 9, 20, .6);
+
+            background: #111;
+        }
+
+        .card-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            /* Keep the top of the portrait visible so the head is not cut. */
+            object-position: center top;
+
+            display: block;
+
+            filter:
+                contrast(1.08) saturate(.9);
+        }
+
+
+        /* Card Sharingan */
+
+        .card-sharingan {
+            position: absolute;
+
+            top: 25px;
+            right: 25px;
+
+            width: 36px;
+            height: 36px;
+
+            border:
+                2px solid #e50914;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 15px #e50914;
+
+            z-index: 5;
+        }
+
+        .card-sharingan::before {
+            content: "";
+
+            position: absolute;
+
+            width: 9px;
+            height: 9px;
+
+            background: #e50914;
+
+            border-radius: 50%;
+
+            left: 11px;
+            top: 11px;
+
+            box-shadow:
+                0 0 8px #e50914;
+        }
+
+        .card-sharingan::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 6px;
+
+            border:
+                1px solid rgba(229, 9, 20, .7);
+
+            border-radius: 50%;
+        }
+
+
+        /* Card Information */
+
+        .card-info {
+            padding:
+                15px 4px 8px;
+        }
+
+        .card-info small {
+            color: #888;
+
+            letter-spacing: 3px;
+
+            font-size: 9px;
+        }
+
+        .card-info h3 {
+            margin:
+                6px 0 0;
+
+            color: #fff;
+
+            font-size: 25px;
+        }
+
+        .card-info h4 {
+            margin: 0;
+
+            color: var(--red);
+
+            font-size: 23px;
+        }
+
+        .card-info p {
+            margin-top: 8px;
+
+            color: #aaa;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+        .card-bottom {
+            position: absolute;
+
+            bottom: 15px;
+
+            left: 18px;
+            right: 18px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            font-size: 7px;
+
+            color: #777;
+
+            letter-spacing: 1px;
+        }
+
+        .card-chip {
+            position: absolute;
+
+            bottom: 40px;
+            right: 18px;
+
+            width: 32px;
+            height: 22px;
+
+            border-radius: 4px;
+
+            border:
+                1px solid #555;
+
+            background:
+                linear-gradient(90deg,
+                    transparent 30%,
+                    #777 31%,
+                    #777 34%,
+                    transparent 35%);
+        }
+
+
+        /* =====================================================
+           ITACHI BACK
+        ===================================================== */
+
+        .id-card-back {
+            transform:
+                rotateY(180deg);
+
+            -webkit-transform:
+                rotateY(180deg);
+
+            background: #050505;
+        }
+
+        .id-card-back img {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center center;
+
+            display: block;
+
+            z-index: 0;
+
+            filter:
+                brightness(.68) contrast(1.15) saturate(.85);
+        }
+
+        .itachi-image-missing::after {
+            content: "Add itachi.png to the same folder as index.html";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            padding: 25px;
+
+            text-align: center;
+
+            color: #ff5962;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+
+            background: #050505;
+
+            z-index: 4;
+        }
+
+
+        .itachi-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 1;
+
+            background:
+                linear-gradient(to bottom,
+                    rgba(0, 0, 0, .05),
+                    rgba(0, 0, 0, .92));
+        }
+
+        .itachi-card-content {
+            position: absolute;
+
+            left: 22px;
+            bottom: 25px;
+
+            z-index: 2;
+        }
+
+        .itachi-card-content span {
+            color: #aaa;
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+        }
+
+        .itachi-card-content h3 {
+            margin:
+                5px 0;
+
+            color: var(--red);
+
+            font-size: 32px;
+
+            letter-spacing: 5px;
+
+            text-shadow:
+                0 0 15px rgba(229, 9, 20, .7);
+        }
+
+        .itachi-card-content p {
+            color: #ddd;
+
+            font-size: 9px;
+
+            line-height: 1.8;
+
+            letter-spacing: 3px;
+        }
+
+        .mangekyo-small {
+            width: 32px;
+            height: 32px;
+
+            margin-top: 12px;
+
+            border-radius: 50%;
+
+            border:
+                2px solid var(--red);
+
+            box-shadow:
+                0 0 15px rgba(229, 9, 20, .8);
+
+            position: relative;
+        }
+
+        .mangekyo-small::before,
+        .mangekyo-small::after {
+            content: "";
+
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            background: var(--red);
+
+            border-radius: 50%;
+        }
+
+        .mangekyo-small::before {
+            top: 3px;
+            left: 10px;
+        }
+
+        .mangekyo-small::after {
+            bottom: 3px;
+            right: 7px;
+        }
+
+
+        /* =====================================================
+           CARD HINT
+        ===================================================== */
+
+        .card-hint {
+            position: absolute;
+
+            bottom: 5px;
+
+            color: #666;
+
+            font-size: 8px;
+
+            letter-spacing: 3px;
+        }
+
+        .card-hint span {
+            color: var(--red);
+        }
+
+
+        /* =====================================================
+           HERO DECORATION
+        ===================================================== */
+
+        .hero-photo-overlay {
+            display: none;
+        }
+
+        .itachi-mark {
+            position: absolute;
+
+            right: 20px;
+            top: 35px;
+
+            z-index: 4;
+
+            width: 55px;
+            height: 55px;
+
+            border:
+                2px solid var(--red);
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 20px rgba(229, 9, 20, .4);
+
+            display: grid;
+
+            place-items: center;
+
+            color: var(--red);
+
+            font-size: 24px;
+        }
+
+        .hero-caption {
+            position: absolute;
+
+            bottom: 10px;
+
+            z-index: 5;
+
+            color: #fff;
+
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                0 2px 10px black;
         }
 
 
@@ -839,57 +1331,35 @@
         ===================================================== */
 
         section {
-
-            padding:
-                110px 0;
-
-            position:
-                relative;
+            padding: 110px 0;
+            position: relative;
         }
-
 
         .dark-section {
-
-            background:
-                #090909;
+            background: #090909;
         }
-
 
         .section-heading {
-
-            margin-bottom:
-                55px;
+            margin-bottom: 55px;
         }
-
 
         .section-label {
+            color: var(--red);
 
-            color:
-                var(--red);
+            font-size: 10px;
 
-            font-size:
-                10px;
+            text-transform: uppercase;
 
-            text-transform:
-                uppercase;
+            letter-spacing: 3px;
 
-            letter-spacing:
-                3px;
-
-            margin-bottom:
-                8px;
+            margin-bottom: 8px;
         }
 
-
         .section-heading h2 {
-
             font-size:
-                clamp(32px,
-                    5vw,
-                    45px);
+                clamp(32px, 5vw, 45px);
 
-            letter-spacing:
-                -2px;
+            letter-spacing: -2px;
         }
 
 
@@ -898,143 +1368,92 @@
         ===================================================== */
 
         .about-grid {
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
                 1.15fr .85fr;
 
-            gap:
-                80px;
+            gap: 80px;
         }
-
 
         .about-text p {
+            color: var(--gray);
 
-            color:
-                var(--gray);
+            font-size: 14px;
 
-            font-size:
-                14px;
+            line-height: 1.9;
 
-            line-height:
-                1.9;
-
-            margin-bottom:
-                18px;
+            margin-bottom: 18px;
         }
-
 
         .about-text .big {
+            font-size: 21px;
 
-            font-size:
-                21px;
+            color: #ddd;
 
-            color:
-                #ddd;
-
-            line-height:
-                1.6;
+            line-height: 1.6;
         }
-
 
         .about-text strong {
-
-            color:
-                white;
+            color: white;
         }
 
-
         .stats {
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            gap:
-                12px;
+            gap: 12px;
         }
 
-
         .stat {
+            padding: 27px;
 
-            padding:
-                27px;
-
-            background:
-                #101010;
+            background: #101010;
 
             border:
                 1px solid var(--border);
 
-            border-radius:
-                7px;
+            border-radius: 7px;
 
-            position:
-                relative;
+            position: relative;
 
-            overflow:
-                hidden;
+            overflow: hidden;
         }
-
 
         .stat::before {
-
             content: "";
 
-            position:
-                absolute;
+            position: absolute;
 
-            left:
-                0;
+            left: 0;
+            top: 0;
 
-            top:
-                0;
+            width: 3px;
+            height: 100%;
 
-            width:
-                3px;
-
-            height:
-                100%;
-
-            background:
-                var(--red);
+            background: var(--red);
         }
-
 
         .stat h3 {
+            font-size: 34px;
 
-            font-size:
-                34px;
+            color: var(--red);
 
-            color:
-                var(--red);
-
-            margin-bottom:
-                2px;
+            margin-bottom: 2px;
         }
-
 
         .stat p {
+            color: #ddd;
 
-            color:
-                #ddd;
-
-            font-size:
-                12px;
+            font-size: 12px;
         }
 
-
         .stat small {
+            color: #666;
 
-            color:
-                #666;
-
-            font-size:
-                10px;
+            font-size: 10px;
         }
 
 
@@ -1043,40 +1462,28 @@
         ===================================================== */
 
         .skills-grid {
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
-                repeat(3,
-                    1fr);
+                repeat(3, 1fr);
 
-            gap:
-                15px;
+            gap: 15px;
         }
 
-
         .skill {
+            padding: 28px;
 
-            padding:
-                28px;
-
-            background:
-                var(--card);
+            background: var(--card);
 
             border:
                 1px solid var(--border);
 
-            border-radius:
-                7px;
+            border-radius: 7px;
 
-            transition:
-                .3s;
+            transition: .3s;
         }
 
-
         .skill:hover {
-
             transform:
                 translateY(-5px);
 
@@ -1087,20 +1494,13 @@
                 0 10px 40px rgba(0, 0, 0, .35);
         }
 
-
         .skill-icon {
+            width: 45px;
+            height: 45px;
 
-            width:
-                45px;
+            display: grid;
 
-            height:
-                45px;
-
-            display:
-                grid;
-
-            place-items:
-                center;
+            place-items: center;
 
             background:
                 rgba(229, 9, 20, .08);
@@ -1108,62 +1508,42 @@
             border:
                 1px solid rgba(229, 9, 20, .18);
 
-            color:
-                var(--red);
+            color: var(--red);
 
-            border-radius:
-                6px;
+            border-radius: 6px;
 
-            margin-bottom:
-                18px;
+            margin-bottom: 18px;
 
-            font-size:
-                19px;
+            font-size: 19px;
         }
-
 
         .skill h3 {
+            font-size: 15px;
 
-            font-size:
-                15px;
-
-            margin-bottom:
-                14px;
+            margin-bottom: 14px;
         }
-
 
         .tags {
+            display: flex;
 
-            display:
-                flex;
+            flex-wrap: wrap;
 
-            flex-wrap:
-                wrap;
-
-            gap:
-                7px;
+            gap: 7px;
         }
 
-
         .tag {
-
-            padding:
-                5px 8px;
+            padding: 5px 8px;
 
             border:
                 1px solid #292929;
 
-            background:
-                #171717;
+            background: #171717;
 
-            color:
-                #aaa;
+            color: #aaa;
 
-            border-radius:
-                4px;
+            border-radius: 4px;
 
-            font-size:
-                10px;
+            font-size: 10px;
         }
 
 
@@ -1172,39 +1552,27 @@
         ===================================================== */
 
         .projects {
+            display: flex;
 
-            display:
-                flex;
+            flex-direction: column;
 
-            flex-direction:
-                column;
-
-            gap:
-                18px;
+            gap: 18px;
         }
 
-
         .project {
+            padding: 35px;
 
-            padding:
-                35px;
-
-            background:
-                #101010;
+            background: #101010;
 
             border:
                 1px solid var(--border);
 
-            border-radius:
-                7px;
+            border-radius: 7px;
 
-            transition:
-                .3s;
+            transition: .3s;
         }
 
-
         .project:hover {
-
             border-color:
                 rgba(229, 9, 20, .45);
 
@@ -1212,127 +1580,83 @@
                 0 20px 50px rgba(0, 0, 0, .35);
         }
 
-
         .project-top {
-
-            display:
-                flex;
+            display: flex;
 
             justify-content:
                 space-between;
 
-            gap:
-                20px;
+            gap: 20px;
         }
-
 
         .project-number {
+            color: #5d5d5d;
 
-            color:
-                #5d5d5d;
+            font-size: 10px;
 
-            font-size:
-                10px;
+            letter-spacing: 2px;
 
-            letter-spacing:
-                2px;
-
-            margin-bottom:
-                7px;
+            margin-bottom: 7px;
         }
-
 
         .project h3 {
+            font-size: 24px;
 
-            font-size:
-                24px;
-
-            letter-spacing:
-                -1px;
+            letter-spacing: -1px;
         }
-
 
         .project-link {
+            color: var(--red);
 
-            color:
-                var(--red);
+            font-size: 12px;
 
-            font-size:
-                12px;
-
-            white-space:
-                nowrap;
+            white-space: nowrap;
         }
-
 
         .project-description {
+            color: var(--gray);
 
-            color:
-                var(--gray);
+            font-size: 13px;
 
-            font-size:
-                13px;
+            max-width: 850px;
 
-            max-width:
-                850px;
+            line-height: 1.8;
 
-            line-height:
-                1.8;
-
-            margin-top:
-                15px;
+            margin-top: 15px;
         }
-
 
         .project .tags {
-
-            margin-top:
-                18px;
+            margin-top: 18px;
         }
 
-
         .highlights {
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            gap:
-                9px 30px;
+            gap: 9px 30px;
 
             border-top:
                 1px solid var(--border);
 
-            margin-top:
-                23px;
+            margin-top: 23px;
 
-            padding-top:
-                20px;
+            padding-top: 20px;
         }
-
 
         .highlight {
+            color: #858585;
 
-            color:
-                #858585;
-
-            font-size:
-                11px;
+            font-size: 11px;
         }
 
-
         .highlight::before {
+            content: "✓";
 
-            content:
-                "✓";
+            color: var(--red);
 
-            color:
-                var(--red);
-
-            margin-right:
-                8px;
+            margin-right: 8px;
         }
 
 
@@ -1341,88 +1665,60 @@
         ===================================================== */
 
         .opensource {
+            padding: 35px;
 
-            padding:
-                35px;
-
-            background:
-                #101010;
+            background: #101010;
 
             border:
                 1px solid rgba(229, 9, 20, .25);
 
-            border-radius:
-                7px;
+            border-radius: 7px;
         }
 
-
         .badge {
+            display: inline-block;
 
-            display:
-                inline-block;
-
-            padding:
-                5px 9px;
+            padding: 5px 9px;
 
             background:
                 rgba(229, 9, 20, .08);
 
-            color:
-                #ff5962;
+            color: #ff5962;
 
             border:
                 1px solid rgba(229, 9, 20, .2);
 
-            font-size:
-                9px;
+            font-size: 9px;
 
-            letter-spacing:
-                1px;
+            letter-spacing: 1px;
         }
-
 
         .opensource h3 {
+            margin-top: 13px;
 
-            margin-top:
-                13px;
-
-            font-size:
-                24px;
+            font-size: 24px;
         }
-
 
         .opensource p {
+            color: var(--gray);
 
-            color:
-                var(--gray);
+            font-size: 13px;
 
-            font-size:
-                13px;
+            line-height: 1.8;
 
-            line-height:
-                1.8;
+            margin-top: 12px;
 
-            margin-top:
-                12px;
-
-            max-width:
-                800px;
+            max-width: 800px;
         }
 
-
         .opensource a {
+            display: inline-block;
 
-            display:
-                inline-block;
+            margin-top: 18px;
 
-            margin-top:
-                18px;
+            color: var(--red);
 
-            color:
-                var(--red);
-
-            font-size:
-                12px;
+            font-size: 12px;
         }
 
 
@@ -1431,51 +1727,35 @@
         ===================================================== */
 
         .cards-two {
-
-            display:
-                grid;
+            display: grid;
 
             grid-template-columns:
                 1fr 1fr;
 
-            gap:
-                15px;
+            gap: 15px;
         }
 
-
         .certificate {
+            padding: 26px;
 
-            padding:
-                26px;
-
-            background:
-                #101010;
+            background: #101010;
 
             border:
                 1px solid var(--border);
 
-            border-radius:
-                7px;
+            border-radius: 7px;
         }
-
 
         .certificate h3 {
-
-            font-size:
-                14px;
+            font-size: 14px;
         }
 
-
         .certificate p {
+            color: #777;
 
-            color:
-                #777;
+            font-size: 11px;
 
-            font-size:
-                11px;
-
-            margin-top:
-                5px;
+            margin-top: 5px;
         }
 
 
@@ -1484,137 +1764,90 @@
         ===================================================== */
 
         .education {
+            padding: 32px;
 
-            padding:
-                32px;
-
-            background:
-                #101010;
+            background: #101010;
 
             border:
                 1px solid var(--border);
 
-            border-radius:
-                7px;
+            border-radius: 7px;
 
-            display:
-                flex;
+            display: flex;
 
-            align-items:
-                center;
+            align-items: center;
 
-            gap:
-                25px;
+            gap: 25px;
         }
 
-
         .education-icon {
+            width: 60px;
+            height: 60px;
 
-            width:
-                60px;
+            display: grid;
 
-            height:
-                60px;
-
-            display:
-                grid;
-
-            place-items:
-                center;
+            place-items: center;
 
             border:
                 1px solid rgba(229, 9, 20, .3);
 
-            color:
-                var(--red);
+            color: var(--red);
 
             background:
                 rgba(229, 9, 20, .07);
 
-            border-radius:
-                7px;
+            border-radius: 7px;
 
-            font-size:
-                24px;
+            font-size: 24px;
         }
-
 
         .education-content {
-
-            flex:
-                1;
+            flex: 1;
         }
-
 
         .education-year {
+            color: var(--red);
 
-            color:
-                var(--red);
+            font-size: 10px;
 
-            font-size:
-                10px;
-
-            letter-spacing:
-                1px;
+            letter-spacing: 1px;
         }
-
 
         .education h3 {
+            margin-top: 8px;
 
-            margin-top:
-                8px;
-
-            font-size:
-                16px;
+            font-size: 16px;
         }
-
 
         .education p {
+            color: var(--gray);
 
-            color:
-                var(--gray);
+            font-size: 12px;
 
-            font-size:
-                12px;
-
-            margin-top:
-                5px;
+            margin-top: 5px;
         }
 
-
         .cgpa {
-
             border-left:
                 1px solid var(--border);
 
-            padding-left:
-                30px;
+            padding-left: 30px;
 
-            text-align:
-                center;
+            text-align: center;
         }
-
 
         .cgpa strong {
+            display: block;
 
-            display:
-                block;
+            color: var(--red);
 
-            color:
-                var(--red);
-
-            font-size:
-                34px;
+            font-size: 34px;
         }
 
-
         .cgpa span {
+            color: #666;
 
-            color:
-                #666;
-
-            font-size:
-                10px;
+            font-size: 10px;
         }
 
 
@@ -1623,132 +1856,84 @@
         ===================================================== */
 
         .contact {
+            text-align: center;
 
-            text-align:
-                center;
-
-            overflow:
-                hidden;
+            overflow: hidden;
         }
 
-
         .contact::before {
-
             content: "";
 
-            position:
-                absolute;
+            position: absolute;
 
-            width:
-                500px;
-
-            height:
-                500px;
+            width: 500px;
+            height: 500px;
 
             background:
                 radial-gradient(circle,
                     rgba(229, 9, 20, .15),
                     transparent 65%);
 
-            left:
-                50%;
-
-            top:
-                50%;
+            left: 50%;
+            top: 50%;
 
             transform:
-                translate(-50%,
-                    -50%);
+                translate(-50%, -50%);
         }
-
 
         .contact-content {
+            position: relative;
 
-            position:
-                relative;
-
-            z-index:
-                2;
+            z-index: 2;
         }
-
 
         .contact h2 {
-
             font-size:
-                clamp(36px,
-                    6vw,
-                    60px);
+                clamp(36px, 6vw, 60px);
 
-            line-height:
-                1.05;
+            line-height: 1.05;
 
-            letter-spacing:
-                -3px;
+            letter-spacing: -3px;
         }
-
 
         .contact h2 span {
+            color: var(--red);
 
-            color:
-                var(--red);
-
-            display:
-                block;
+            display: block;
         }
-
 
         .contact-description {
+            max-width: 600px;
 
-            max-width:
-                600px;
+            margin: 20px auto;
 
-            margin:
-                20px auto;
+            color: var(--gray);
 
-            color:
-                var(--gray);
-
-            font-size:
-                13px;
+            font-size: 13px;
         }
-
 
         .contact-details {
+            display: flex;
 
-            display:
-                flex;
+            justify-content: center;
 
-            justify-content:
-                center;
+            flex-wrap: wrap;
 
-            flex-wrap:
-                wrap;
+            gap: 22px;
 
-            gap:
-                22px;
-
-            margin-top:
-                35px;
+            margin-top: 35px;
         }
-
 
         .contact-details a {
+            color: #888;
 
-            color:
-                #888;
+            font-size: 11px;
 
-            font-size:
-                11px;
-
-            transition:
-                .3s;
+            transition: .3s;
         }
 
-
         .contact-details a:hover {
-
-            color:
-                var(--red);
+            color: var(--red);
         }
 
 
@@ -1757,21 +1942,16 @@
         ===================================================== */
 
         footer {
-
             border-top:
                 1px solid #1c1c1c;
 
-            padding:
-                25px 0;
+            padding: 25px 0;
 
-            text-align:
-                center;
+            text-align: center;
 
-            color:
-                #555;
+            color: #555;
 
-            font-size:
-                10px;
+            font-size: 10px;
         }
 
 
@@ -1780,9 +1960,7 @@
         ===================================================== */
 
         .reveal {
-
-            opacity:
-                0;
+            opacity: 0;
 
             transform:
                 translateY(25px);
@@ -1792,11 +1970,8 @@
                 transform .7s ease;
         }
 
-
         .reveal.show {
-
-            opacity:
-                1;
+            opacity: 1;
 
             transform:
                 translateY(0);
@@ -1811,65 +1986,50 @@
 
             .nav-links,
             .nav-button {
-
-                display:
-                    none;
+                display: none;
             }
-
 
             .menu {
-
-                display:
-                    block;
+                display: block;
             }
-
 
             .hero-grid {
+                grid-template-columns: 1fr;
 
-                grid-template-columns:
-                    1fr;
-
-                text-align:
-                    center;
+                text-align: center;
             }
-
 
             .hero-description {
-
-                margin:
-                    auto;
+                margin: auto;
             }
-
 
             .hero-buttons,
             .socials {
-
-                justify-content:
-                    center;
+                justify-content: center;
             }
-
 
             .hero-image-area {
+                min-height: 570px;
 
-                min-height:
-                    470px;
-
-                order:
-                    -1;
+                order: -1;
             }
-
 
             .about-grid {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
 
-
             .skills-grid {
-
                 grid-template-columns:
                     1fr 1fr;
+            }
+
+            .id-card-area {
+                transform:
+                    scale(.9);
+            }
+
+            .typing-line {
+                justify-content: center;
             }
         }
 
@@ -1877,124 +2037,84 @@
         @media(max-width: 600px) {
 
             .container {
-
-                width:
-                    92%;
+                width: 92%;
             }
-
 
             section {
-
-                padding:
-                    80px 0;
+                padding: 80px 0;
             }
-
 
             .hero h1 {
+                font-size: 46px;
 
-                font-size:
-                    46px;
-
-                letter-spacing:
-                    -3px;
+                letter-spacing: -3px;
             }
-
 
             .hero-image-area {
-
-                min-height:
-                    390px;
+                min-height: 500px;
             }
-
 
             .image-ring {
-
-                width:
-                    300px;
-
-                height:
-                    300px;
+                width: 330px;
+                height: 330px;
             }
 
-
-            .hero-photo,
-            .hero-photo-overlay {
-
-                width:
-                    245px;
-
-                height:
-                    320px;
+            .id-card-area {
+                transform:
+                    scale(.78);
             }
 
+            .typing-line {
+                font-size: 20px;
+
+                min-height: 40px;
+            }
+
+            .typing-cursor {
+                height: 29px;
+            }
 
             .skills-grid,
             .cards-two {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
-
 
             .stats {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
-
 
             .project {
-
-                padding:
-                    25px;
+                padding: 25px;
             }
-
 
             .project-top {
-
-                flex-direction:
-                    column;
+                flex-direction: column;
             }
-
 
             .highlights {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
-
 
             .education {
+                flex-direction: column;
 
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
+                align-items: flex-start;
             }
 
-
             .cgpa {
+                width: 100%;
 
-                width:
-                    100%;
-
-                border-left:
-                    0;
+                border-left: 0;
 
                 border-top:
                     1px solid var(--border);
 
-                padding-left:
-                    0;
+                padding-left: 0;
 
-                padding-top:
-                    20px;
+                padding-top: 20px;
 
-                text-align:
-                    left;
+                text-align: left;
             }
-
         }
     </style>
 
@@ -2005,78 +2125,72 @@
 
 
     <!-- =====================================================
-     NAVBAR
-===================================================== -->
+         ITACHI MANGEKYO SHARINGAN CURSOR
+         Save your supplied Sharingan image as:
+         itachi-sharingan.png
+    ===================================================== -->
+
+    <div class="itachi-cursor" id="itachiCursor">
+
+        <img src="itachi-sharingan.png" alt="" draggable="false">
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
 
     <nav>
 
         <div class="container nav-container">
 
             <a href="#home" class="logo">
-
-                <span>&lt;</span>Ram<span>/&gt;</span>
-
+                <span>&lt;</span> 𝙍𝘼𝙈 <span>/&gt;</span>
             </a>
 
 
             <ul class="nav-links">
 
                 <li>
-                    <a href="#home">
-                        Home
-                    </a>
+                    <a href="#home">Home</a>
                 </li>
 
                 <li>
-                    <a href="#about">
-                        About
-                    </a>
+                    <a href="#about">About</a>
                 </li>
 
                 <li>
-                    <a href="#skills">
-                        Skills
-                    </a>
+                    <a href="#skills">Skills</a>
                 </li>
 
                 <li>
-                    <a href="#projects">
-                        Projects
-                    </a>
+                    <a href="#projects">Projects</a>
                 </li>
 
                 <li>
-                    <a href="#opensource">
-                        Open Source
-                    </a>
+                    <a href="#opensource">Open Source</a>
                 </li>
 
                 <li>
-                    <a href="#education">
-                        Education
-                    </a>
+                    <a href="#education">Education</a>
                 </li>
 
                 <li>
-                    <a href="#contact">
-                        Contact
-                    </a>
+                    <a href="#contact">Contact</a>
                 </li>
 
             </ul>
 
 
             <a href="#contact" class="nav-button">
-
                 Let's Talk
-
             </a>
 
 
             <div class="menu" onclick="toggleMenu()">
-
                 ☰
-
             </div>
 
         </div>
@@ -2086,13 +2200,15 @@
 
 
     <!-- =====================================================
-     HERO
-===================================================== -->
+         HERO
+    ===================================================== -->
 
     <section id="home" class="hero">
 
         <div class="container hero-grid">
 
+
+            <!-- HERO LEFT -->
 
             <div class="hero-content reveal">
 
@@ -2107,31 +2223,30 @@
 
 
                 <p class="hero-small">
-
                     Hello, I'm
-
                 </p>
 
 
                 <h1>
 
                     <span>
-                        Durga Ram
+                        ᴅᴜʀɢᴀ ʀᴀᴍ
                     </span>
 
                     <span class="red">
-                        Annapureddy
+                        ᴀɴɴᴀᴘᴜʀᴇᴅᴅʏ
                     </span>
 
                 </h1>
 
 
-                <h2>
+                <!-- TYPING TITLE -->
 
-                    Java Full Stack
-                    <span>
-                        Developer
-                    </span>
+                <h2 class="typing-line">
+
+                    <span id="typingText"></span>
+
+                    <span class="typing-cursor"></span>
 
                 </h2>
 
@@ -2166,14 +2281,14 @@
 
                 <div class="socials">
 
-                    <a href="https://github.com/This-Is-Ram" target="_blank">
+                    <a href="https://github.com/This-Is-Ram" target="_blank" rel="noopener">
 
                         GH
 
                     </a>
 
 
-                    <a href="https://linkedin.com/in/durgaram555" target="_blank">
+                    <a href="https://linkedin.com/in/durgaram555" target="_blank" rel="noopener">
 
                         IN
 
@@ -2193,7 +2308,9 @@
 
 
 
-            <!-- HERO IMAGE -->
+            <!-- =================================================
+                 HERO ID CARD
+            ================================================= -->
 
             <div class="hero-image-area reveal">
 
@@ -2201,23 +2318,176 @@
                 <div class="image-ring"></div>
 
 
-                <img class="hero-photo" src="ram.png" alt="Durga Ram Annapureddy">
+                <div class="id-card-area">
 
 
-                <div class="hero-photo-overlay"></div>
+                    <!-- LANYARD -->
+
+                    <div class="lanyard">
+
+                        <div class="lanyard-strap"></div>
+
+                        <div class="lanyard-hook">
+
+                            <span></span>
+
+                        </div>
+
+                    </div>
 
 
-                <div class="itachi-mark">
+                    <!-- DRAG LABEL -->
 
-                    ◉
+                    <div class="drag-label">
+
+                        <span>↙</span>
+                        DRAG ME
+
+                    </div>
+
+
+                    <!-- ID CARD -->
+
+                    <div class="id-card" id="idCard">
+
+
+                        <div class="id-card-inner">
+
+
+                            <!-- =============================
+                                 FRONT
+                            ============================== -->
+
+                            <div class="id-card-face id-card-front">
+
+
+                                <div class="card-sharingan"></div>
+
+
+                                <div class="card-photo-wrapper">
+
+                                    <img src="ram.png" alt="Durga Ram Annapureddy">
+
+                                </div>
+
+
+                                <div class="card-info">
+
+                                    <small>
+                                        DEVELOPER ID
+                                    </small>
+
+
+                                    <h3>
+                                        Durga Ram
+                                    </h3>
+
+
+                                    <h4>
+                                        Annapureddy
+                                    </h4>
+
+
+                                    <p>
+                                        Java Full-Stack Developer
+                                    </p>
+
+                                </div>
+
+
+                                <div class="card-bottom">
+
+                                    <span>
+                                        JAVA
+                                    </span>
+
+                                    <span>
+                                        SPRING BOOT
+                                    </span>
+
+                                    <span>
+                                        REACT
+                                    </span>
+
+                                </div>
+
+
+                                <div class="card-chip"></div>
+
+
+                            </div>
+
+
+
+                            <!-- =============================
+                                 BACK - ITACHI
+                            ============================== -->
+
+                            <div class="id-card-face id-card-back">
+
+
+                                <div class="itachi-overlay"></div>
+
+
+                                <img src="itachi.png" alt="Itachi"
+                                    onerror="this.style.display='none'; this.parentElement.classList.add('itachi-image-missing');">
+
+
+                                <div class="itachi-card-content">
+
+
+                                    <span>
+                                        うちは イタチ
+                                    </span>
+
+
+                                    <h3>
+                                        ITACHI
+                                    </h3>
+
+
+                                    <p>
+
+                                        DISCIPLINE<br>
+                                        CREATES<br>
+                                        FREEDOM
+
+                                    </p>
+
+
+                                    <div class="mangekyo-small"></div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="card-hint">
+
+                        <span>CLICK</span>
+                        TO FLIP
+
+                    </div>
+
 
                 </div>
 
 
+                <div class="itachi-mark">
+                    ◉
+                </div>
+
+
                 <div class="hero-caption">
-
                     JAVA • SHARINGAN • CODE
-
                 </div>
 
 
@@ -2230,8 +2500,8 @@
 
 
     <!-- =====================================================
-     ABOUT
-===================================================== -->
+         ABOUT
+    ===================================================== -->
 
     <section id="about" class="dark-section">
 
@@ -2308,9 +2578,7 @@
 
                     <div class="stat">
 
-                        <h3>
-                            60+
-                        </h3>
+                        <h3>60+</h3>
 
                         <p>
                             DSA Problems
@@ -2325,9 +2593,7 @@
 
                     <div class="stat">
 
-                        <h3>
-                            8.57
-                        </h3>
+                        <h3>8.57</h3>
 
                         <p>
                             CGPA / 10
@@ -2342,9 +2608,7 @@
 
                     <div class="stat">
 
-                        <h3>
-                            2
-                        </h3>
+                        <h3>2</h3>
 
                         <p>
                             Featured Projects
@@ -2359,9 +2623,7 @@
 
                     <div class="stat">
 
-                        <h3>
-                            1
-                        </h3>
+                        <h3>1</h3>
 
                         <p>
                             Merged PR
@@ -2385,8 +2647,8 @@
 
 
     <!-- =====================================================
-     SKILLS
-===================================================== -->
+         SKILLS
+    ===================================================== -->
 
     <section id="skills">
 
@@ -2629,8 +2891,8 @@
 
 
     <!-- =====================================================
-     PROJECTS
-===================================================== -->
+         PROJECTS
+    ===================================================== -->
 
     <section id="projects" class="dark-section">
 
@@ -2671,7 +2933,7 @@
                         </div>
 
 
-                        <a href="https://github.com/This-Is-Ram/E-COMMERCE-FULL-STACK" target="_blank"
+                        <a href="https://github.com/This-Is-Ram/E-COMMERCE-FULL-STACK" target="_blank" rel="noopener"
                             class="project-link">
 
                             GitHub ↗
@@ -2780,7 +3042,7 @@
 
 
                         <a href="https://github.com/jhipster/generator-jhipster/pull/33751" target="_blank"
-                            class="project-link">
+                            rel="noopener" class="project-link">
 
                             Pull Request ↗
 
@@ -2855,8 +3117,8 @@
 
 
     <!-- =====================================================
-     OPEN SOURCE
-===================================================== -->
+         OPEN SOURCE
+    ===================================================== -->
 
     <section id="opensource">
 
@@ -2897,7 +3159,7 @@
                 </p>
 
 
-                <a href="https://github.com/jhipster/generator-jhipster/pull/33751" target="_blank">
+                <a href="https://github.com/jhipster/generator-jhipster/pull/33751" target="_blank" rel="noopener">
 
                     View Pull Request →
 
@@ -2912,8 +3174,8 @@
 
 
     <!-- =====================================================
-     CERTIFICATIONS
-===================================================== -->
+         CERTIFICATIONS
+    ===================================================== -->
 
     <section class="dark-section">
 
@@ -2972,8 +3234,8 @@
 
 
     <!-- =====================================================
-     EDUCATION
-===================================================== -->
+         EDUCATION
+    ===================================================== -->
 
     <section id="education">
 
@@ -3052,8 +3314,8 @@
 
 
     <!-- =====================================================
-     ACHIEVEMENTS
-===================================================== -->
+         ACHIEVEMENTS
+    ===================================================== -->
 
     <section class="dark-section">
 
@@ -3119,8 +3381,8 @@
 
 
     <!-- =====================================================
-     CONTACT
-===================================================== -->
+         CONTACT
+    ===================================================== -->
 
     <section id="contact" class="contact">
 
@@ -3178,14 +3440,14 @@
                 </a>
 
 
-                <a href="https://github.com/This-Is-Ram" target="_blank">
+                <a href="https://github.com/This-Is-Ram" target="_blank" rel="noopener">
 
                     GitHub
 
                 </a>
 
 
-                <a href="https://linkedin.com/in/durgaram555" target="_blank">
+                <a href="https://linkedin.com/in/durgaram555" target="_blank" rel="noopener">
 
                     LinkedIn
 
@@ -3200,12 +3462,13 @@
 
 
     <!-- =====================================================
-     FOOTER
-===================================================== -->
+         FOOTER
+    ===================================================== -->
 
     <footer>
 
         ©
+
         <span id="year"></span>
 
         Durga Ram Annapureddy
@@ -3219,20 +3482,24 @@
 
 
     <!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+         JAVASCRIPT
+    ===================================================== -->
 
     <script>
 
 
-        /* YEAR */
+        /* =====================================================
+           YEAR
+        ===================================================== */
 
         document.getElementById("year").textContent =
             new Date().getFullYear();
 
 
 
-        /* MOBILE MENU */
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
 
         function toggleMenu() {
 
@@ -3241,38 +3508,28 @@
 
 
             if (
-                links.style.display ===
-                "flex"
+                links.style.display === "flex"
             ) {
 
-                links.style.display =
-                    "none";
+                links.style.display = "none";
 
             } else {
 
-                links.style.display =
-                    "flex";
+                links.style.display = "flex";
 
-                links.style.flexDirection =
-                    "column";
+                links.style.flexDirection = "column";
 
-                links.style.position =
-                    "absolute";
+                links.style.position = "absolute";
 
-                links.style.top =
-                    "75px";
+                links.style.top = "75px";
 
-                links.style.left =
-                    "0";
+                links.style.left = "0";
 
-                links.style.width =
-                    "100%";
+                links.style.width = "100%";
 
-                links.style.padding =
-                    "25px";
+                links.style.padding = "25px";
 
-                links.style.background =
-                    "#050505";
+                links.style.background = "#050505";
 
                 links.style.borderBottom =
                     "1px solid rgba(229,9,20,.2)";
@@ -3282,7 +3539,9 @@
 
 
 
-        /* SCROLL REVEAL */
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
 
         const observer =
             new IntersectionObserver(
@@ -3308,8 +3567,7 @@
                 },
 
                 {
-                    threshold:
-                        0.12
+                    threshold: .12
                 }
 
             );
@@ -3320,16 +3578,16 @@
             .forEach(
                 function (element) {
 
-                    observer.observe(
-                        element
-                    );
+                    observer.observe(element);
 
                 }
             );
 
 
 
-        /* CLOSE MOBILE MENU */
+        /* =====================================================
+           CLOSE MOBILE MENU
+        ===================================================== */
 
         document
             .querySelectorAll(".nav-links a")
@@ -3345,12 +3603,9 @@
                             ) {
 
                                 document
-                                    .querySelector(
-                                        ".nav-links"
-                                    )
+                                    .querySelector(".nav-links")
                                     .style
-                                    .display =
-                                    "none";
+                                    .display = "none";
 
                             }
 
@@ -3359,6 +3614,468 @@
 
                 }
             );
+
+
+
+        /* =====================================================
+           TYPING / BACKSPACE ANIMATION
+        ===================================================== */
+
+        const typingText =
+            document.getElementById("typingText");
+
+
+        const typingWords = [
+
+            "Java Full-Stack Developer",
+
+            "Spring Boot Developer",
+
+            "Microservices Developer",
+
+            "Backend Developer"
+
+        ];
+
+
+        let wordIndex = 0;
+
+        let characterIndex = 0;
+
+        let deleting = false;
+
+
+        function typeEffect() {
+
+            const currentWord =
+                typingWords[wordIndex];
+
+
+            if (!deleting) {
+
+                typingText.textContent =
+                    currentWord.substring(
+                        0,
+                        characterIndex + 1
+                    );
+
+                characterIndex++;
+
+
+                if (
+                    characterIndex ===
+                    currentWord.length
+                ) {
+
+                    deleting = true;
+
+                    setTimeout(
+                        typeEffect,
+                        1700
+                    );
+
+                    return;
+                }
+
+
+                setTimeout(
+                    typeEffect,
+                    85
+                );
+
+
+            } else {
+
+                typingText.textContent =
+                    currentWord.substring(
+                        0,
+                        characterIndex - 1
+                    );
+
+                characterIndex--;
+
+
+                if (
+                    characterIndex === 0
+                ) {
+
+                    deleting = false;
+
+                    wordIndex =
+                        (
+                            wordIndex + 1
+                        ) %
+                        typingWords.length;
+
+                    setTimeout(
+                        typeEffect,
+                        400
+                    );
+
+                    return;
+                }
+
+
+                setTimeout(
+                    typeEffect,
+                    45
+                );
+
+            }
+
+        }
+
+
+        typeEffect();
+
+
+
+        /* =====================================================
+           DRAGGABLE ID CARD
+        ===================================================== */
+
+        const idCard =
+            document.getElementById("idCard");
+
+
+        let dragging = false;
+
+        let moved = false;
+
+        let startX = 0;
+
+        let startY = 0;
+
+        let dragX = 0;
+
+        let dragY = 0;
+
+
+        idCard.addEventListener(
+            "pointerdown",
+            function (event) {
+
+                dragging = true;
+
+                moved = false;
+
+                startX = event.clientX;
+
+                startY = event.clientY;
+
+                idCard.classList.add("dragging");
+
+                idCard.setPointerCapture(
+                    event.pointerId
+                );
+
+            }
+        );
+
+
+        idCard.addEventListener(
+            "pointermove",
+            function (event) {
+
+                if (!dragging) {
+                    return;
+                }
+
+
+                const dx =
+                    event.clientX - startX;
+
+
+                const dy =
+                    event.clientY - startY;
+
+
+                if (
+                    Math.abs(dx) > 6 ||
+                    Math.abs(dy) > 6
+                ) {
+
+                    moved = true;
+
+                }
+
+
+                /*
+                   Limit the card movement slightly
+                   so the lanyard remains visually connected.
+                */
+
+                dragX =
+                    Math.max(
+                        -150,
+                        Math.min(150, dx)
+                    );
+
+
+                dragY =
+                    Math.max(
+                        -70,
+                        Math.min(180, dy)
+                    );
+
+
+                const rotation =
+                    dragX * .045;
+
+
+                idCard.style.setProperty(
+                    "--drag-x",
+                    dragX + "px"
+                );
+
+
+                idCard.style.setProperty(
+                    "--drag-y",
+                    dragY + "px"
+                );
+
+
+                idCard.style.setProperty(
+                    "--drag-rotate",
+                    rotation + "deg"
+                );
+
+            }
+        );
+
+
+        idCard.addEventListener(
+            "pointerup",
+            function (event) {
+
+                if (!dragging) {
+                    return;
+                }
+
+
+                dragging = false;
+
+                idCard.classList.remove(
+                    "dragging"
+                );
+
+
+                /*
+                   If user only clicked:
+                   flip the card.
+                */
+
+                if (!moved) {
+
+                    const cardInner =
+                        document.querySelector(".id-card-inner");
+
+                    cardInner.classList.toggle(
+                        "flipped"
+                    );
+
+                }
+
+
+                /*
+                   If dragged:
+                   smoothly return home.
+                */
+
+                if (moved) {
+
+                    setTimeout(
+                        function () {
+
+                            idCard.style.setProperty(
+                                "--drag-x",
+                                "0px"
+                            );
+
+                            idCard.style.setProperty(
+                                "--drag-y",
+                                "0px"
+                            );
+
+                            idCard.style.setProperty(
+                                "--drag-rotate",
+                                "0deg"
+                            );
+
+                        },
+                        20
+                    );
+
+                }
+
+            }
+        );
+
+
+        idCard.addEventListener(
+            "pointercancel",
+            function () {
+
+                dragging = false;
+
+                idCard.classList.remove(
+                    "dragging"
+                );
+
+
+                idCard.style.setProperty(
+                    "--drag-x",
+                    "0px"
+                );
+
+
+                idCard.style.setProperty(
+                    "--drag-y",
+                    "0px"
+                );
+
+
+                idCard.style.setProperty(
+                    "--drag-rotate",
+                    "0deg"
+                );
+
+            }
+        );
+
+
+
+        /* =====================================================
+           ITACHI MANGEKYO SHARINGAN MOUSE FOLLOWER
+        ===================================================== */
+
+        const itachiCursor =
+            document.getElementById("itachiCursor");
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        let cursorX = 0;
+        let cursorY = 0;
+
+        let cursorVisible = false;
+
+
+        document.addEventListener(
+            "mousemove",
+            function (event) {
+
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+
+                if (!cursorVisible) {
+
+                    cursorVisible = true;
+
+                    itachiCursor.style.opacity = "1";
+
+                    cursorX = mouseX;
+                    cursorY = mouseY;
+
+                }
+
+            }
+        );
+
+
+        function animateItachiCursor() {
+
+            cursorX +=
+                (mouseX - cursorX) * .22;
+
+            cursorY +=
+                (mouseY - cursorY) * .22;
+
+
+            itachiCursor.style.left =
+                cursorX + "px";
+
+            itachiCursor.style.top =
+                cursorY + "px";
+
+
+            requestAnimationFrame(
+                animateItachiCursor
+            );
+
+        }
+
+
+        animateItachiCursor();
+
+
+        /* =====================================================
+           CURSOR HOVER EFFECT
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                "a, button, input, textarea, select, " +
+                ".id-card, .skill, .project, " +
+                ".certificate, .stat, .opensource"
+            )
+            .forEach(
+                function (element) {
+
+                    element.addEventListener(
+                        "mouseenter",
+                        function () {
+
+                            itachiCursor
+                                .classList
+                                .add("hover");
+
+                        }
+                    );
+
+
+                    element.addEventListener(
+                        "mouseleave",
+                        function () {
+
+                            itachiCursor
+                                .classList
+                                .remove("hover");
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           HIDE CURSOR WHEN MOUSE LEAVES PAGE
+        ===================================================== */
+
+        document.addEventListener(
+            "mouseleave",
+            function () {
+
+                itachiCursor.style.opacity = "0";
+
+            }
+        );
+
+
+        document.addEventListener(
+            "mouseenter",
+            function () {
+
+                if (cursorVisible) {
+
+                    itachiCursor.style.opacity = "1";
+
+                }
+
+            }
+        );
+
 
     </script>
 
